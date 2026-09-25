@@ -1,0 +1,2228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Browse Books | LibraNexus</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+
+                    colors: {
+                        brand: {
+                            50: '#EEF2FF',
+                            100: '#E0E7FF',
+                            500: '#6366F1',
+                            600: '#4F46E5',
+                            700: '#4338CA',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+
+<body class="bg-[#FAFAFC] text-slate-800 font-sans antialiased">
+
+
+    <!-- =========================================================
+         NAVBAR
+    ========================================================== -->
+
+    <header
+        class="sticky top-0 z-50
+               bg-white/95 backdrop-blur-md
+               border-b border-gray-100"
+    >
+
+        <div
+            class="max-w-7xl mx-auto
+                   px-4 sm:px-6 lg:px-8
+                   h-20 flex items-center
+                   justify-between"
+        >
+
+            <!-- Logo -->
+
+            <a
+                href="{{ url_for('home') }}"
+                class="flex items-center gap-3"
+            >
+
+                <div
+                    class="w-10 h-10
+                           bg-[#1E293B]
+                           rounded-xl
+                           flex items-center
+                           justify-center
+                           text-white
+                           shadow-md"
+                >
+
+                    <i class="fa-solid fa-bookmark"></i>
+
+                </div>
+
+
+                <span
+                    class="text-xl font-bold
+                           tracking-tight
+                           text-[#0F172A]"
+                >
+                    Libra<span class="text-brand-600">Nexus</span>
+                </span>
+
+            </a>
+
+
+            <!-- Desktop Navigation -->
+
+            <nav
+                class="hidden md:flex
+                       items-center gap-8
+                       text-sm font-semibold"
+            >
+
+                <a
+                    href="{{ url_for('home') }}"
+                    class="text-gray-600
+                           hover:text-brand-600
+                           transition"
+                >
+                    Home
+                </a>
+
+
+                <a
+                    href="{{ url_for('books') }}"
+                    class="text-brand-600"
+                >
+                    Browse Books
+                </a>
+
+
+                <a
+                    href="{{ url_for('home') }}#categories"
+                    class="text-gray-600
+                           hover:text-brand-600
+                           transition"
+                >
+                    Categories
+                </a>
+
+
+                <a
+                    href="{{ url_for('home') }}#about"
+                    class="text-gray-600
+                           hover:text-brand-600
+                           transition"
+                >
+                    About
+                </a>
+
+            </nav>
+
+
+            <!-- Desktop Actions -->
+
+            <div
+                class="hidden sm:flex
+                       items-center gap-6"
+            >
+
+                <a
+                    href="{{ url_for('login') }}"
+                    class="text-sm font-bold
+                           text-gray-700
+                           hover:text-brand-600
+                           transition"
+                >
+                    Log in
+                </a>
+
+
+                <a
+                    href="{{ url_for('register') }}"
+                    class="bg-brand-600
+                           hover:bg-brand-700
+                           text-white
+                           text-sm font-semibold
+                           px-6 py-2.5
+                           rounded-xl
+                           shadow-sm
+                           transition"
+                >
+                    Get started
+                </a>
+
+            </div>
+
+
+            <!-- Mobile Button -->
+
+            <button
+                id="mobile-menu-btn"
+                type="button"
+                class="md:hidden
+                       p-2 text-gray-600"
+            >
+
+                <i class="fa-solid fa-bars text-xl"></i>
+
+            </button>
+
+        </div>
+
+
+        <!-- Mobile Menu -->
+
+        <div
+            id="mobile-menu"
+            class="hidden md:hidden
+                   bg-white
+                   border-t border-gray-100
+                   px-6 py-5"
+        >
+
+            <div class="flex flex-col gap-4">
+
+                <a
+                    href="{{ url_for('home') }}"
+                    class="text-gray-600"
+                >
+                    Home
+                </a>
+
+
+                <a
+                    href="{{ url_for('books') }}"
+                    class="text-brand-600
+                           font-semibold"
+                >
+                    Browse Books
+                </a>
+
+
+                <a
+                    href="{{ url_for('home') }}#categories"
+                    class="text-gray-600"
+                >
+                    Categories
+                </a>
+
+
+                <a
+                    href="{{ url_for('home') }}#about"
+                    class="text-gray-600"
+                >
+                    About
+                </a>
+
+
+                <hr>
+
+
+                <a
+                    href="{{ url_for('login') }}"
+                    class="font-semibold
+                           text-gray-700"
+                >
+                    Log in
+                </a>
+
+
+                <a
+                    href="{{ url_for('register') }}"
+                    class="bg-brand-600
+                           text-white
+                           text-center
+                           py-3 rounded-xl
+                           font-semibold"
+                >
+                    Get started
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         PAGE HEADER
+    ========================================================== -->
+
+    <main>
+
+        <section
+            class="bg-white
+                   border-b border-gray-100"
+        >
+
+            <div
+                class="max-w-7xl mx-auto
+                       px-4 sm:px-6 lg:px-8
+                       py-14"
+            >
+
+                <div class="max-w-3xl">
+
+                    <span
+                        class="text-xs font-extrabold
+                               uppercase
+                               tracking-widest
+                               text-brand-600"
+                    >
+                        LibraNexus Collection
+                    </span>
+
+
+                    <h1
+                        class="text-4xl sm:text-5xl
+                               font-extrabold
+                               tracking-tight
+                               text-[#0F172A]
+                               mt-3"
+                    >
+                        Explore our library
+                    </h1>
+
+
+                    <p
+                        class="text-gray-500
+                               text-base sm:text-lg
+                               leading-relaxed
+                               mt-4"
+                    >
+                        Discover books across technology,
+                        science, business, literature,
+                        and more. Find something worth
+                        reading today.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================================
+             SEARCH + FILTERS
+        ========================================================== -->
+
+        <section
+            class="max-w-7xl mx-auto
+                   px-4 sm:px-6 lg:px-8
+                   py-10"
+        >
+
+            <div
+                class="bg-white
+                       rounded-2xl
+                       border border-gray-100
+                       shadow-sm
+                       p-5"
+            >
+
+                <div
+                    class="flex flex-col
+                           lg:flex-row gap-4"
+                >
+
+                    <!-- Search -->
+
+                    <div
+                        class="relative flex-1"
+                    >
+
+                        <i
+                            class="fa-solid
+                                   fa-magnifying-glass
+                                   absolute left-4
+                                   top-1/2
+                                   -translate-y-1/2
+                                   text-gray-400"
+                        ></i>
+
+
+                        <input
+                            id="searchInput"
+                            type="text"
+                            placeholder="Search by title, author, or category..."
+                            class="w-full
+                                   pl-11 pr-4 py-3.5
+                                   border border-gray-200
+                                   rounded-xl
+                                   text-sm
+                                   focus:outline-none
+                                   focus:ring-2
+                                   focus:ring-brand-100
+                                   focus:border-brand-500"
+                        >
+
+                    </div>
+
+
+                    <!-- Category -->
+
+                    <select
+                        id="categoryFilter"
+                        class="lg:w-56
+                               px-4 py-3.5
+                               border border-gray-200
+                               rounded-xl
+                               text-sm
+                               text-gray-700
+                               focus:outline-none
+                               focus:ring-2
+                               focus:ring-brand-100
+                               focus:border-brand-500"
+                    >
+
+                        <option value="all">
+                            All Categories
+                        </option>
+
+                        <option value="computer science">
+                            Computer Science
+                        </option>
+
+                        <option value="programming">
+                            Programming
+                        </option>
+
+                        <option value="software engineering">
+                            Software Engineering
+                        </option>
+
+                        <option value="business">
+                            Business & Economics
+                        </option>
+
+                        <option value="self-development">
+                            Self Development
+                        </option>
+
+                        <option value="science">
+                            Science & Research
+                        </option>
+
+                    </select>
+
+
+                    <!-- Availability -->
+
+                    <select
+                        id="availabilityFilter"
+                        class="lg:w-48
+                               px-4 py-3.5
+                               border border-gray-200
+                               rounded-xl
+                               text-sm
+                               text-gray-700
+                               focus:outline-none
+                               focus:ring-2
+                               focus:ring-brand-100
+                               focus:border-brand-500"
+                    >
+
+                        <option value="all">
+                            All Availability
+                        </option>
+
+                        <option value="available">
+                            Available
+                        </option>
+
+                        <option value="waitlist">
+                            Waitlist
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================================
+             BOOKS SECTION
+        ========================================================== -->
+
+        <section
+            class="max-w-7xl mx-auto
+                   px-4 sm:px-6 lg:px-8
+                   pb-20"
+        >
+
+            <!-- Section Header -->
+
+            <div
+                class="flex flex-col
+                       sm:flex-row
+                       sm:items-center
+                       sm:justify-between
+                       gap-4 mb-8"
+            >
+
+                <div>
+
+                    <h2
+                        class="text-2xl
+                               font-extrabold
+                               text-[#0F172A]"
+                    >
+                        All books
+                    </h2>
+
+
+                    <p
+                        id="bookCount"
+                        class="text-sm
+                               text-gray-500 mt-1"
+                    >
+                        Showing 8 books
+                    </p>
+
+                </div>
+
+
+                <select
+                    id="sortFilter"
+                    class="px-4 py-2.5
+                           bg-white
+                           border border-gray-200
+                           rounded-xl
+                           text-sm
+                           font-semibold
+                           text-gray-700
+                           focus:outline-none"
+                >
+
+                    <option value="default">
+                        Sort by
+                    </option>
+
+                    <option value="title">
+                        Title A-Z
+                    </option>
+
+                    <option value="rating">
+                        Highest Rated
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- Books Grid -->
+
+            <div
+                id="booksGrid"
+                class="grid grid-cols-1
+                       sm:grid-cols-2
+                       lg:grid-cols-4
+                       gap-6"
+            >
+
+
+                <!-- =================================================
+                     BOOK 1
+                ================================================== -->
+
+                <article
+                    class="book-card
+                           bg-white
+                           rounded-2xl
+                           border border-gray-100
+                           shadow-sm
+                           hover:shadow-xl
+                           transition
+                           overflow-hidden"
+                    data-id="1"
+                    data-title="Clean Code"
+                    data-author="Robert C. Martin"
+                    data-category="software engineering"
+                    data-availability="available"
+                    data-rating="4.8"
+                >
+
+                    <div
+                        class="relative
+                               aspect-[3/4]"
+                    >
+
+                        <img
+                            src="https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=600&auto=format&fit=crop"
+                            alt="Clean Code"
+                            class="w-full h-full
+                                   object-cover"
+                        >
+
+
+                        <span
+                            class="absolute
+                                   top-3 left-3
+                                   bg-brand-600
+                                   text-white
+                                   text-[10px]
+                                   font-bold
+                                   px-3 py-1.5
+                                   rounded-full"
+                        >
+                            POPULAR
+                        </span>
+
+
+                        <button
+                            type="button"
+                            onclick="toggleFavorite(this)"
+                            class="favorite-btn
+                                   absolute
+                                   top-3 right-3
+                                   w-9 h-9
+                                   bg-white/90
+                                   rounded-full
+                                   flex items-center
+                                   justify-center
+                                   text-gray-500
+                                   shadow-md"
+                        >
+
+                            <i
+                                class="fa-regular
+                                       fa-heart"
+                            ></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="p-5">
+
+                        <span
+                            class="text-[10px]
+                                   font-extrabold
+                                   uppercase
+                                   tracking-wider
+                                   text-emerald-600"
+                        >
+                            Software Engineering
+                        </span>
+
+
+                        <h3
+                            class="font-bold
+                                   text-gray-900 mt-2"
+                        >
+                            Clean Code
+                        </h3>
+
+
+                        <p
+                            class="text-xs
+                                   text-gray-500 mt-1"
+                        >
+                            Robert C. Martin
+                        </p>
+
+
+                        <div
+                            class="flex items-center
+                                   justify-between
+                                   text-xs mt-5"
+                        >
+
+                            <span class="font-bold">
+
+                                <i
+                                    class="fa-solid
+                                           fa-star
+                                           text-amber-400"
+                                ></i>
+
+                                4.8
+
+                            </span>
+
+
+                            <span
+                                class="text-emerald-600
+                                       bg-emerald-50
+                                       px-2 py-1
+                                       rounded"
+                            >
+                                4 available
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="{{ url_for('book_details', book_id=1) }}"
+                            class="block w-full mt-4
+                                   py-2.5
+                                   bg-brand-600
+                                   hover:bg-brand-700
+                                   text-white
+                                   text-xs
+                                   font-bold
+                                   rounded-xl
+                                   transition
+                                   text-center"
+                        >
+                            View book
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     BOOK 2
+                ================================================== -->
+
+                <article
+                    class="book-card
+                           bg-white
+                           rounded-2xl
+                           border border-gray-100
+                           shadow-sm
+                           hover:shadow-xl
+                           transition
+                           overflow-hidden"
+                    data-id="2"
+                    data-title="The Pragmatic Programmer"
+                    data-author="David Thomas"
+                    data-category="programming"
+                    data-availability="available"
+                    data-rating="4.9"
+                >
+
+                    <div
+                        class="relative
+                               aspect-[3/4]"
+                    >
+
+                        <img
+                            src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600&auto=format&fit=crop"
+                            alt="The Pragmatic Programmer"
+                            class="w-full h-full
+                                   object-cover"
+                        >
+
+
+                        <button
+                            type="button"
+                            onclick="toggleFavorite(this)"
+                            class="favorite-btn
+                                   absolute
+                                   top-3 right-3
+                                   w-9 h-9
+                                   bg-white/90
+                                   rounded-full
+                                   flex items-center
+                                   justify-center
+                                   text-gray-500
+                                   shadow-md"
+                        >
+
+                            <i
+                                class="fa-regular
+                                       fa-heart"
+                            ></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="p-5">
+
+                        <span
+                            class="text-[10px]
+                                   font-extrabold
+                                   uppercase
+                                   tracking-wider
+                                   text-emerald-600"
+                        >
+                            Programming
+                        </span>
+
+
+                        <h3
+                            class="font-bold
+                                   text-gray-900 mt-2"
+                        >
+                            The Pragmatic Programmer
+                        </h3>
+
+
+                        <p
+                            class="text-xs
+                                   text-gray-500 mt-1"
+                        >
+                            David Thomas
+                        </p>
+
+
+                        <div
+                            class="flex items-center
+                                   justify-between
+                                   text-xs mt-5"
+                        >
+
+                            <span class="font-bold">
+
+                                <i
+                                    class="fa-solid
+                                           fa-star
+                                           text-amber-400"
+                                ></i>
+
+                                4.9
+
+                            </span>
+
+
+                            <span
+                                class="text-emerald-600
+                                       bg-emerald-50
+                                       px-2 py-1
+                                       rounded"
+                            >
+                                2 available
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="{{ url_for('book_details', book_id=2) }}"
+                            class="block w-full mt-4
+                                   py-2.5
+                                   bg-brand-600
+                                   hover:bg-brand-700
+                                   text-white
+                                   text-xs
+                                   font-bold
+                                   rounded-xl
+                                   transition
+                                   text-center"
+                        >
+                            View book
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     BOOK 3
+                ================================================== -->
+
+                <article
+                    class="book-card
+                           bg-white
+                           rounded-2xl
+                           border border-gray-100
+                           shadow-sm
+                           hover:shadow-xl
+                           transition
+                           overflow-hidden"
+                    data-id="3"
+                    data-title="Python Crash Course"
+                    data-author="Eric Matthes"
+                    data-category="computer science"
+                    data-availability="available"
+                    data-rating="4.7"
+                >
+
+                    <div
+                        class="relative
+                               aspect-[3/4]"
+                    >
+
+                        <img
+                            src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600&auto=format&fit=crop"
+                            alt="Python Crash Course"
+                            class="w-full h-full
+                                   object-cover"
+                        >
+
+
+                        <button
+                            type="button"
+                            onclick="toggleFavorite(this)"
+                            class="favorite-btn
+                                   absolute
+                                   top-3 right-3
+                                   w-9 h-9
+                                   bg-white/90
+                                   rounded-full
+                                   flex items-center
+                                   justify-center
+                                   text-gray-500
+                                   shadow-md"
+                        >
+
+                            <i
+                                class="fa-regular
+                                       fa-heart"
+                            ></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="p-5">
+
+                        <span
+                            class="text-[10px]
+                                   font-extrabold
+                                   uppercase
+                                   tracking-wider
+                                   text-emerald-600"
+                        >
+                            Computer Science
+                        </span>
+
+
+                        <h3
+                            class="font-bold
+                                   text-gray-900 mt-2"
+                        >
+                            Python Crash Course
+                        </h3>
+
+
+                        <p
+                            class="text-xs
+                                   text-gray-500 mt-1"
+                        >
+                            Eric Matthes
+                        </p>
+
+
+                        <div
+                            class="flex items-center
+                                   justify-between
+                                   text-xs mt-5"
+                        >
+
+                            <span class="font-bold">
+
+                                <i
+                                    class="fa-solid
+                                           fa-star
+                                           text-amber-400"
+                                ></i>
+
+                                4.7
+
+                            </span>
+
+
+                            <span
+                                class="text-emerald-600
+                                       bg-emerald-50
+                                       px-2 py-1
+                                       rounded"
+                            >
+                                5 available
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="{{ url_for('book_details', book_id=3) }}"
+                            class="block w-full mt-4
+                                   py-2.5
+                                   bg-brand-600
+                                   hover:bg-brand-700
+                                   text-white
+                                   text-xs
+                                   font-bold
+                                   rounded-xl
+                                   transition
+                                   text-center"
+                        >
+                            View book
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     BOOK 4
+                ================================================== -->
+
+                <article
+                    class="book-card
+                           bg-white
+                           rounded-2xl
+                           border border-gray-100
+                           shadow-sm
+                           hover:shadow-xl
+                           transition
+                           overflow-hidden"
+                    data-id="4"
+                    data-title="Introduction to Algorithms"
+                    data-author="Thomas H. Cormen"
+                    data-category="computer science"
+                    data-availability="waitlist"
+                    data-rating="4.6"
+                >
+
+                    <div
+                        class="relative
+                               aspect-[3/4]"
+                    >
+
+                        <img
+                            src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600&auto=format&fit=crop"
+                            alt="Introduction to Algorithms"
+                            class="w-full h-full
+                                   object-cover"
+                        >
+
+
+                        <button
+                            type="button"
+                            onclick="toggleFavorite(this)"
+                            class="favorite-btn
+                                   absolute
+                                   top-3 right-3
+                                   w-9 h-9
+                                   bg-white/90
+                                   rounded-full
+                                   flex items-center
+                                   justify-center
+                                   text-gray-500
+                                   shadow-md"
+                        >
+
+                            <i
+                                class="fa-regular
+                                       fa-heart"
+                            ></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="p-5">
+
+                        <span
+                            class="text-[10px]
+                                   font-extrabold
+                                   uppercase
+                                   tracking-wider
+                                   text-emerald-600"
+                        >
+                            Computer Science
+                        </span>
+
+
+                        <h3
+                            class="font-bold
+                                   text-gray-900 mt-2"
+                        >
+                            Introduction to Algorithms
+                        </h3>
+
+
+                        <p
+                            class="text-xs
+                                   text-gray-500 mt-1"
+                        >
+                            Thomas H. Cormen
+                        </p>
+
+
+                        <div
+                            class="flex items-center
+                                   justify-between
+                                   text-xs mt-5"
+                        >
+
+                            <span class="font-bold">
+
+                                <i
+                                    class="fa-solid
+                                           fa-star
+                                           text-amber-400"
+                                ></i>
+
+                                4.6
+
+                            </span>
+
+
+                            <span
+                                class="text-amber-600
+                                       bg-amber-50
+                                       px-2 py-1
+                                       rounded"
+                            >
+                                Waitlist
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="{{ url_for('book_details', book_id=4) }}"
+                            class="block w-full mt-4
+                                   py-2.5
+                                   bg-amber-500
+                                   hover:bg-amber-600
+                                   text-white
+                                   text-xs
+                                   font-bold
+                                   rounded-xl
+                                   transition
+                                   text-center"
+                        >
+                            View book
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     BOOK 5
+                ================================================== -->
+
+                <article
+                    class="book-card
+                           bg-white
+                           rounded-2xl
+                           border border-gray-100
+                           shadow-sm
+                           hover:shadow-xl
+                           transition
+                           overflow-hidden"
+                    data-id="5"
+                    data-title="Atomic Habits"
+                    data-author="James Clear"
+                    data-category="self-development"
+                    data-availability="available"
+                    data-rating="4.9"
+                >
+
+                    <div
+                        class="relative
+                               aspect-[3/4]"
+                    >
+
+                        <img
+                            src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?q=80&w=600&auto=format&fit=crop"
+                            alt="Atomic Habits"
+                            class="w-full h-full
+                                   object-cover"
+                        >
+
+
+                        <span
+                            class="absolute
+                                   top-3 left-3
+                                   bg-brand-600
+                                   text-white
+                                   text-[10px]
+                                   font-bold
+                                   px-3 py-1.5
+                                   rounded-full"
+                        >
+                            TRENDING
+                        </span>
+
+
+                        <button
+                            type="button"
+                            onclick="toggleFavorite(this)"
+                            class="favorite-btn
+                                   absolute
+                                   top-3 right-3
+                                   w-9 h-9
+                                   bg-white/90
+                                   rounded-full
+                                   flex items-center
+                                   justify-center
+                                   text-gray-500
+                                   shadow-md"
+                        >
+
+                            <i
+                                class="fa-regular
+                                       fa-heart"
+                            ></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="p-5">
+
+                        <span
+                            class="text-[10px]
+                                   font-extrabold
+                                   uppercase
+                                   tracking-wider
+                                   text-emerald-600"
+                        >
+                            Self Development
+                        </span>
+
+
+                        <h3
+                            class="font-bold
+                                   text-gray-900 mt-2"
+                        >
+                            Atomic Habits
+                        </h3>
+
+
+                        <p
+                            class="text-xs
+                                   text-gray-500 mt-1"
+                        >
+                            James Clear
+                        </p>
+
+
+                        <div
+                            class="flex items-center
+                                   justify-between
+                                   text-xs mt-5"
+                        >
+
+                            <span class="font-bold">
+
+                                <i
+                                    class="fa-solid
+                                           fa-star
+                                           text-amber-400"
+                                ></i>
+
+                                4.9
+
+                            </span>
+
+
+                            <span
+                                class="text-emerald-600
+                                       bg-emerald-50
+                                       px-2 py-1
+                                       rounded"
+                            >
+                                3 available
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="{{ url_for('book_details', book_id=5) }}"
+                            class="block w-full mt-4
+                                   py-2.5
+                                   bg-brand-600
+                                   hover:bg-brand-700
+                                   text-white
+                                   text-xs
+                                   font-bold
+                                   rounded-xl
+                                   transition
+                                   text-center"
+                        >
+                            View book
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     BOOK 6
+                ================================================== -->
+
+                <article
+                    class="book-card
+                           bg-white
+                           rounded-2xl
+                           border border-gray-100
+                           shadow-sm
+                           hover:shadow-xl
+                           transition
+                           overflow-hidden"
+                    data-id="6"
+                    data-title="The Lean Startup"
+                    data-author="Eric Ries"
+                    data-category="business"
+                    data-availability="available"
+                    data-rating="4.5"
+                >
+
+                    <div
+                        class="relative
+                               aspect-[3/4]"
+                    >
+
+                        <img
+                            src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=600&auto=format&fit=crop"
+                            alt="The Lean Startup"
+                            class="w-full h-full
+                                   object-cover"
+                        >
+
+
+                        <button
+                            type="button"
+                            onclick="toggleFavorite(this)"
+                            class="favorite-btn
+                                   absolute
+                                   top-3 right-3
+                                   w-9 h-9
+                                   bg-white/90
+                                   rounded-full
+                                   flex items-center
+                                   justify-center
+                                   text-gray-500
+                                   shadow-md"
+                        >
+
+                            <i
+                                class="fa-regular
+                                       fa-heart"
+                            ></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="p-5">
+
+                        <span
+                            class="text-[10px]
+                                   font-extrabold
+                                   uppercase
+                                   tracking-wider
+                                   text-emerald-600"
+                        >
+                            Business & Economics
+                        </span>
+
+
+                        <h3
+                            class="font-bold
+                                   text-gray-900 mt-2"
+                        >
+                            The Lean Startup
+                        </h3>
+
+
+                        <p
+                            class="text-xs
+                                   text-gray-500 mt-1"
+                        >
+                            Eric Ries
+                        </p>
+
+
+                        <div
+                            class="flex items-center
+                                   justify-between
+                                   text-xs mt-5"
+                        >
+
+                            <span class="font-bold">
+
+                                <i
+                                    class="fa-solid
+                                           fa-star
+                                           text-amber-400"
+                                ></i>
+
+                                4.5
+
+                            </span>
+
+
+                            <span
+                                class="text-emerald-600
+                                       bg-emerald-50
+                                       px-2 py-1
+                                       rounded"
+                            >
+                                6 available
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="{{ url_for('book_details', book_id=6) }}"
+                            class="block w-full mt-4
+                                   py-2.5
+                                   bg-brand-600
+                                   hover:bg-brand-700
+                                   text-white
+                                   text-xs
+                                   font-bold
+                                   rounded-xl
+                                   transition
+                                   text-center"
+                        >
+                            View book
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     BOOK 7
+                ================================================== -->
+
+                <article
+                    class="book-card
+                           bg-white
+                           rounded-2xl
+                           border border-gray-100
+                           shadow-sm
+                           hover:shadow-xl
+                           transition
+                           overflow-hidden"
+                    data-id="7"
+                    data-title="A Brief History of Time"
+                    data-author="Stephen Hawking"
+                    data-category="science"
+                    data-availability="available"
+                    data-rating="4.7"
+                >
+
+                    <div
+                        class="relative
+                               aspect-[3/4]"
+                    >
+
+                        <img
+                            src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=600&auto=format&fit=crop"
+                            alt="A Brief History of Time"
+                            class="w-full h-full
+                                   object-cover"
+                        >
+
+
+                        <button
+                            type="button"
+                            onclick="toggleFavorite(this)"
+                            class="favorite-btn
+                                   absolute
+                                   top-3 right-3
+                                   w-9 h-9
+                                   bg-white/90
+                                   rounded-full
+                                   flex items-center
+                                   justify-center
+                                   text-gray-500
+                                   shadow-md"
+                        >
+
+                            <i
+                                class="fa-regular
+                                       fa-heart"
+                            ></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="p-5">
+
+                        <span
+                            class="text-[10px]
+                                   font-extrabold
+                                   uppercase
+                                   tracking-wider
+                                   text-emerald-600"
+                        >
+                            Science & Research
+                        </span>
+
+
+                        <h3
+                            class="font-bold
+                                   text-gray-900 mt-2"
+                        >
+                            A Brief History of Time
+                        </h3>
+
+
+                        <p
+                            class="text-xs
+                                   text-gray-500 mt-1"
+                        >
+                            Stephen Hawking
+                        </p>
+
+
+                        <div
+                            class="flex items-center
+                                   justify-between
+                                   text-xs mt-5"
+                        >
+
+                            <span class="font-bold">
+
+                                <i
+                                    class="fa-solid
+                                           fa-star
+                                           text-amber-400"
+                                ></i>
+
+                                4.7
+
+                            </span>
+
+
+                            <span
+                                class="text-emerald-600
+                                       bg-emerald-50
+                                       px-2 py-1
+                                       rounded"
+                            >
+                                2 available
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="{{ url_for('book_details', book_id=7) }}"
+                            class="block w-full mt-4
+                                   py-2.5
+                                   bg-brand-600
+                                   hover:bg-brand-700
+                                   text-white
+                                   text-xs
+                                   font-bold
+                                   rounded-xl
+                                   transition
+                                   text-center"
+                        >
+                            View book
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     BOOK 8
+                ================================================== -->
+
+                <article
+                    class="book-card
+                           bg-white
+                           rounded-2xl
+                           border border-gray-100
+                           shadow-sm
+                           hover:shadow-xl
+                           transition
+                           overflow-hidden"
+                    data-id="8"
+                    data-title="Don't Make Me Think"
+                    data-author="Steve Krug"
+                    data-category="software engineering"
+                    data-availability="available"
+                    data-rating="4.6"
+                >
+
+                    <div
+                        class="relative
+                               aspect-[3/4]"
+                    >
+
+                        <img
+                            src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=600&auto=format&fit=crop"
+                            alt="Don't Make Me Think"
+                            class="w-full h-full
+                                   object-cover"
+                        >
+
+
+                        <button
+                            type="button"
+                            onclick="toggleFavorite(this)"
+                            class="favorite-btn
+                                   absolute
+                                   top-3 right-3
+                                   w-9 h-9
+                                   bg-white/90
+                                   rounded-full
+                                   flex items-center
+                                   justify-center
+                                   text-gray-500
+                                   shadow-md"
+                        >
+
+                            <i
+                                class="fa-regular
+                                       fa-heart"
+                            ></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="p-5">
+
+                        <span
+                            class="text-[10px]
+                                   font-extrabold
+                                   uppercase
+                                   tracking-wider
+                                   text-emerald-600"
+                        >
+                            Software Engineering
+                        </span>
+
+
+                        <h3
+                            class="font-bold
+                                   text-gray-900 mt-2"
+                        >
+                            Don't Make Me Think
+                        </h3>
+
+
+                        <p
+                            class="text-xs
+                                   text-gray-500 mt-1"
+                        >
+                            Steve Krug
+                        </p>
+
+
+                        <div
+                            class="flex items-center
+                                   justify-between
+                                   text-xs mt-5"
+                        >
+
+                            <span class="font-bold">
+
+                                <i
+                                    class="fa-solid
+                                           fa-star
+                                           text-amber-400"
+                                ></i>
+
+                                4.6
+
+                            </span>
+
+
+                            <span
+                                class="text-emerald-600
+                                       bg-emerald-50
+                                       px-2 py-1
+                                       rounded"
+                            >
+                                4 available
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="{{ url_for('book_details', book_id=8) }}"
+                            class="block w-full mt-4
+                                   py-2.5
+                                   bg-brand-600
+                                   hover:bg-brand-700
+                                   text-white
+                                   text-xs
+                                   font-bold
+                                   rounded-xl
+                                   transition
+                                   text-center"
+                        >
+                            View book
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+
+            <!-- No Results -->
+
+            <div
+                id="noResults"
+                class="hidden
+                       text-center
+                       py-16"
+            >
+
+                <div
+                    class="w-16 h-16
+                           mx-auto
+                           rounded-2xl
+                           bg-brand-50
+                           text-brand-600
+                           flex items-center
+                           justify-center"
+                >
+
+                    <i
+                        class="fa-solid
+                               fa-book-open
+                               text-2xl"
+                    ></i>
+
+                </div>
+
+
+                <h3
+                    class="text-xl
+                           font-bold
+                           text-gray-900 mt-5"
+                >
+                    No books found
+                </h3>
+
+
+                <p
+                    class="text-gray-500
+                           text-sm mt-2"
+                >
+                    Try a different title,
+                    author, or category.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer
+        class="bg-[#0B132B]
+               text-white
+               pt-14 pb-8"
+    >
+
+        <div
+            class="max-w-7xl mx-auto
+                   px-4 sm:px-6 lg:px-8"
+        >
+
+            <div
+                class="flex flex-col
+                       md:flex-row
+                       items-center
+                       justify-between
+                       gap-6"
+            >
+
+                <!-- Footer Logo -->
+
+                <a
+                    href="{{ url_for('home') }}"
+                    class="flex items-center gap-3"
+                >
+
+                    <div
+                        class="w-9 h-9
+                               bg-brand-600
+                               rounded-xl
+                               flex items-center
+                               justify-center"
+                    >
+
+                        <i
+                            class="fa-solid
+                                   fa-bookmark"
+                        ></i>
+
+                    </div>
+
+
+                    <span
+                        class="text-xl
+                               font-bold"
+                    >
+                        Libra<span
+                            class="text-brand-500"
+                        >
+                            Nexus
+                        </span>
+                    </span>
+
+                </a>
+
+
+                <!-- Footer Links -->
+
+                <div
+                    class="flex items-center
+                           gap-6
+                           text-sm
+                           text-slate-400"
+                >
+
+                    <a
+                        href="{{ url_for('home') }}"
+                        class="hover:text-white"
+                    >
+                        Home
+                    </a>
+
+
+                    <a
+                        href="{{ url_for('books') }}"
+                        class="hover:text-white"
+                    >
+                        Browse Books
+                    </a>
+
+
+                    <a
+                        href="{{ url_for('login') }}"
+                        class="hover:text-white"
+                    >
+                        Member Portal
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="border-t
+                       border-slate-800
+                       mt-8 pt-6
+                       text-center
+                       text-xs
+                       text-slate-500"
+            >
+
+                © 2026 LibraNexus.
+                All rights reserved.
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+
+        // =========================================================
+        // MOBILE MENU
+        // =========================================================
+
+        const mobileMenuBtn =
+            document.getElementById('mobile-menu-btn');
+
+        const mobileMenu =
+            document.getElementById('mobile-menu');
+
+
+        mobileMenuBtn.addEventListener('click', () => {
+
+            mobileMenu.classList.toggle('hidden');
+
+        });
+
+
+
+        // =========================================================
+        // FAVORITE
+        // =========================================================
+
+        function toggleFavorite(button) {
+
+            button.classList.toggle('text-red-500');
+
+            const icon =
+                button.querySelector('i');
+
+
+            if (
+                button.classList.contains('text-red-500')
+            ) {
+
+                icon.classList.remove(
+                    'fa-regular'
+                );
+
+                icon.classList.add(
+                    'fa-solid'
+                );
+
+            } else {
+
+                icon.classList.remove(
+                    'fa-solid'
+                );
+
+                icon.classList.add(
+                    'fa-regular'
+                );
+
+            }
+
+        }
+
+
+
+        // =========================================================
+        // SEARCH + FILTER
+        // =========================================================
+
+        const searchInput =
+            document.getElementById(
+                'searchInput'
+            );
+
+
+        const categoryFilter =
+            document.getElementById(
+                'categoryFilter'
+            );
+
+
+        const availabilityFilter =
+            document.getElementById(
+                'availabilityFilter'
+            );
+
+
+        const sortFilter =
+            document.getElementById(
+                'sortFilter'
+            );
+
+
+        const booksGrid =
+            document.getElementById(
+                'booksGrid'
+            );
+
+
+        const bookCards =
+            Array.from(
+                document.querySelectorAll(
+                    '.book-card'
+                )
+            );
+
+
+        const bookCount =
+            document.getElementById(
+                'bookCount'
+            );
+
+
+        const noResults =
+            document.getElementById(
+                'noResults'
+            );
+
+
+
+        function filterBooks() {
+
+            const searchValue =
+                searchInput.value
+                    .toLowerCase()
+                    .trim();
+
+
+            const categoryValue =
+                categoryFilter.value
+                    .toLowerCase();
+
+
+            const availabilityValue =
+                availabilityFilter.value
+                    .toLowerCase();
+
+
+            let visibleBooks = 0;
+
+
+            bookCards.forEach(card => {
+
+                const title =
+                    card.dataset.title
+                        .toLowerCase();
+
+
+                const author =
+                    card.dataset.author
+                        .toLowerCase();
+
+
+                const category =
+                    card.dataset.category
+                        .toLowerCase();
+
+
+                const availability =
+                    card.dataset.availability
+                        .toLowerCase();
+
+
+                const matchesSearch =
+                    title.includes(searchValue) ||
+                    author.includes(searchValue) ||
+                    category.includes(searchValue);
+
+
+                const matchesCategory =
+                    categoryValue === 'all' ||
+                    category === categoryValue;
+
+
+                const matchesAvailability =
+                    availabilityValue === 'all' ||
+                    availability === availabilityValue;
+
+
+                const shouldShow =
+                    matchesSearch &&
+                    matchesCategory &&
+                    matchesAvailability;
+
+
+                if (shouldShow) {
+
+                    card.classList.remove(
+                        'hidden'
+                    );
+
+                    visibleBooks++;
+
+                } else {
+
+                    card.classList.add(
+                        'hidden'
+                    );
+
+                }
+
+            });
+
+
+            bookCount.textContent =
+                `Showing ${visibleBooks} book${visibleBooks === 1 ? '' : 's'}`;
+
+
+            if (visibleBooks === 0) {
+
+                noResults.classList.remove(
+                    'hidden'
+                );
+
+            } else {
+
+                noResults.classList.add(
+                    'hidden'
+                );
+
+            }
+
+        }
+
+
+
+        searchInput.addEventListener(
+            'input',
+            filterBooks
+        );
+
+
+        categoryFilter.addEventListener(
+            'change',
+            filterBooks
+        );
+
+
+        availabilityFilter.addEventListener(
+            'change',
+            filterBooks
+        );
+
+
+
+        // =========================================================
+        // SORTING
+        // =========================================================
+
+        sortFilter.addEventListener(
+            'change',
+            () => {
+
+                const cards =
+                    Array.from(
+                        booksGrid.querySelectorAll(
+                            '.book-card'
+                        )
+                    );
+
+
+                if (
+                    sortFilter.value === 'title'
+                ) {
+
+                    cards.sort((a, b) => {
+
+                        return a.dataset.title
+                            .localeCompare(
+                                b.dataset.title
+                            );
+
+                    });
+
+                }
+
+
+                if (
+                    sortFilter.value === 'rating'
+                ) {
+
+                    cards.sort((a, b) => {
+
+                        return (
+                            parseFloat(
+                                b.dataset.rating
+                            ) -
+                            parseFloat(
+                                a.dataset.rating
+                            )
+                        );
+
+                    });
+
+                }
+
+
+                if (
+                    sortFilter.value === 'default'
+                ) {
+
+                    cards.sort((a, b) => {
+
+                        return (
+                            parseInt(a.dataset.id) -
+                            parseInt(b.dataset.id)
+                        );
+
+                    });
+
+                }
+
+
+                cards.forEach(card => {
+
+                    booksGrid.appendChild(card);
+
+                });
+
+            }
+        );
+
+
+
+        // =========================================================
+        // INITIAL FILTER
+        // =========================================================
+
+        filterBooks();
+
+    </script>
+
+</body>
+
+</html>
