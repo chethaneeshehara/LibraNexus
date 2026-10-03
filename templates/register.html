@@ -696,10 +696,11 @@
 
 
       <!-- Registration Form -->
-      <form
-        class="register-form"
-        onsubmit="handleRegister(event)"
-      >
+     <form
+      class="register-form"
+      method="POST"
+      action="{{ url_for('register') }}"
+     >
 
         <!-- First Name + Last Name -->
         <div class="form-row">
@@ -718,6 +719,7 @@
               <input
                 type="text"
                 id="firstName"
+                name="first_name"
                 class="form-input"
                 placeholder="Sofia"
                 required
@@ -748,6 +750,7 @@
               <input
                 type="text"
                 id="lastName"
+                name="last_name"
                 class="form-input"
                 placeholder="Martinez"
                 required
@@ -781,6 +784,7 @@
             <input
               type="email"
               id="email"
+              name="email"
               class="form-input"
               placeholder="sofia@university.edu"
               required
@@ -812,6 +816,7 @@
             <input
               type="password"
               id="password"
+              name="password"
               class="form-input"
               placeholder="At least 8 characters"
               required
@@ -857,6 +862,7 @@
             <input
               type="password"
               id="confirmPassword"
+              name="confirm_password"
               class="form-input"
               placeholder="Re-enter your password"
               required
@@ -1038,36 +1044,7 @@
     }
 
 
-    // ========================================
-    // Register Form Handler
-    // ========================================
-
-    function handleRegister(event) {
-
-      event.preventDefault();
-
-      const password =
-        document.getElementById('password').value;
-
-      const confirmPassword =
-        document.getElementById('confirmPassword').value;
-
-
-      // Check password match
-      if (password !== confirmPassword) {
-
-        alert('Passwords do not match!');
-
-        return;
-      }
-
-
-      // Temporary UI behaviour
-      // Actual account creation will be connected
-      // to Flask + MySQL later.
-
-      alert('Account created successfully!');
-    }
+   
 
 
     // ========================================

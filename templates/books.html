@@ -56,18 +56,10 @@
          NAVBAR
     ========================================================== -->
 
-    <header
-        class="sticky top-0 z-50
-               bg-white/95 backdrop-blur-md
-               border-b border-gray-100"
-    >
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
 
-        <div
-            class="max-w-7xl mx-auto
-                   px-4 sm:px-6 lg:px-8
-                   h-20 flex items-center
-                   justify-between"
-        >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20
+                    flex items-center justify-between">
 
             <!-- Logo -->
 
@@ -77,13 +69,9 @@
             >
 
                 <div
-                    class="w-10 h-10
-                           bg-[#1E293B]
-                           rounded-xl
-                           flex items-center
-                           justify-center
-                           text-white
-                           shadow-md"
+                    class="w-10 h-10 bg-[#1E293B]
+                           rounded-xl flex items-center
+                           justify-center text-white shadow-md"
                 >
 
                     <i class="fa-solid fa-bookmark"></i>
@@ -92,9 +80,7 @@
 
 
                 <span
-                    class="text-xl font-bold
-                           tracking-tight
-                           text-[#0F172A]"
+                    class="text-xl font-bold tracking-tight text-[#0F172A]"
                 >
                     Libra<span class="text-brand-600">Nexus</span>
                 </span>
@@ -102,82 +88,70 @@
             </a>
 
 
+            
             <!-- Desktop Navigation -->
 
-            <nav
-                class="hidden md:flex
-                       items-center gap-8
-                       text-sm font-semibold"
-            >
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold">
 
                 <a
                     href="{{ url_for('home') }}"
-                    class="text-gray-600
-                           hover:text-brand-600
-                           transition"
+                    class="text-brand-600"
                 >
                     Home
                 </a>
 
-
                 <a
                     href="{{ url_for('books') }}"
-                    class="text-brand-600"
+                    class="text-gray-600 hover:text-brand-600 transition"
                 >
                     Browse Books
                 </a>
 
-
                 <a
                     href="{{ url_for('home') }}#categories"
-                    class="text-gray-600
-                           hover:text-brand-600
-                           transition"
+                    class="text-gray-600 hover:text-brand-600 transition"
                 >
                     Categories
                 </a>
 
-
                 <a
                     href="{{ url_for('home') }}#about"
-                    class="text-gray-600
-                           hover:text-brand-600
-                           transition"
+                    class="text-gray-600 hover:text-brand-600 transition"
                 >
                     About
                 </a>
 
+                
+               <a 
+               href="{{ url_for('dashboard') }}" 
+               class="text-gray-600 hover:text-brand-600 transition"
+>
+               Dashboard
+               </a>
+
             </nav>
+
 
 
             <!-- Desktop Actions -->
 
-            <div
-                class="hidden sm:flex
-                       items-center gap-6"
-            >
+            <div class="hidden sm:flex items-center gap-6">
 
                 <a
                     href="{{ url_for('login') }}"
-                    class="text-sm font-bold
-                           text-gray-700
-                           hover:text-brand-600
-                           transition"
+                    class="text-sm font-bold text-gray-700
+                           hover:text-brand-600 transition"
                 >
                     Log in
                 </a>
 
 
                 <a
-                    href="{{ url_for('register') }}"
-                    class="bg-brand-600
-                           hover:bg-brand-700
-                           text-white
-                           text-sm font-semibold
-                           px-6 py-2.5
-                           rounded-xl
-                           shadow-sm
-                           transition"
+                    href="{{ url_for('login') }}"
+                    class="bg-brand-600 hover:bg-brand-700
+                           text-white text-sm font-semibold
+                           px-6 py-2.5 rounded-xl
+                           shadow-sm transition"
                 >
                     Get started
                 </a>
@@ -190,8 +164,7 @@
             <button
                 id="mobile-menu-btn"
                 type="button"
-                class="md:hidden
-                       p-2 text-gray-600"
+                class="md:hidden p-2 text-gray-600"
             >
 
                 <i class="fa-solid fa-bars text-xl"></i>
@@ -205,10 +178,8 @@
 
         <div
             id="mobile-menu"
-            class="hidden md:hidden
-                   bg-white
-                   border-t border-gray-100
-                   px-6 py-5"
+            class="hidden md:hidden bg-white
+                   border-t border-gray-100 px-6 py-5"
         >
 
             <div class="flex flex-col gap-4">
@@ -223,8 +194,7 @@
 
                 <a
                     href="{{ url_for('books') }}"
-                    class="text-brand-600
-                           font-semibold"
+                    class="text-brand-600 font-semibold"
                 >
                     Browse Books
                 </a>
@@ -251,19 +221,16 @@
 
                 <a
                     href="{{ url_for('login') }}"
-                    class="font-semibold
-                           text-gray-700"
+                    class="font-semibold text-gray-700"
                 >
                     Log in
                 </a>
 
 
                 <a
-                    href="{{ url_for('register') }}"
-                    class="bg-brand-600
-                           text-white
-                           text-center
-                           py-3 rounded-xl
+                    href="{{ url_for('login') }}"
+                    class="bg-brand-600 text-white
+                           text-center py-3 rounded-xl
                            font-semibold"
                 >
                     Get started
@@ -284,8 +251,7 @@
     <main>
 
         <section
-            class="bg-white
-                   border-b border-gray-100"
+            class="bg-white border-b border-gray-100"
         >
 
             <div
@@ -298,8 +264,7 @@
 
                     <span
                         class="text-xs font-extrabold
-                               uppercase
-                               tracking-widest
+                               uppercase tracking-widest
                                text-brand-600"
                     >
                         LibraNexus Collection
@@ -324,9 +289,8 @@
                                mt-4"
                     >
                         Discover books across technology,
-                        science, business, literature,
-                        and more. Find something worth
-                        reading today.
+                        science, business, literature, and more.
+                        Find something worth reading today.
                     </p>
 
                 </div>
@@ -356,21 +320,17 @@
             >
 
                 <div
-                    class="flex flex-col
-                           lg:flex-row gap-4"
+                    class="flex flex-col lg:flex-row
+                           gap-4"
                 >
 
                     <!-- Search -->
 
-                    <div
-                        class="relative flex-1"
-                    >
+                    <div class="relative flex-1">
 
                         <i
-                            class="fa-solid
-                                   fa-magnifying-glass
-                                   absolute left-4
-                                   top-1/2
+                            class="fa-solid fa-magnifying-glass
+                                   absolute left-4 top-1/2
                                    -translate-y-1/2
                                    text-gray-400"
                         ></i>
@@ -430,8 +390,8 @@
                             Business & Economics
                         </option>
 
-                        <option value="self-development">
-                            Self Development
+                        <option value="literature">
+                            Literature
                         </option>
 
                         <option value="science">
@@ -492,18 +452,15 @@
             <!-- Section Header -->
 
             <div
-                class="flex flex-col
-                       sm:flex-row
-                       sm:items-center
-                       sm:justify-between
-                       gap-4 mb-8"
+                class="flex items-center
+                       justify-between
+                       mb-8"
             >
 
                 <div>
 
                     <h2
-                        class="text-2xl
-                               font-extrabold
+                        class="text-2xl font-extrabold
                                text-[#0F172A]"
                     >
                         All books
@@ -512,8 +469,7 @@
 
                     <p
                         id="bookCount"
-                        class="text-sm
-                               text-gray-500 mt-1"
+                        class="text-sm text-gray-500 mt-1"
                     >
                         Showing 8 books
                     </p>
@@ -567,15 +523,11 @@
                 ================================================== -->
 
                 <article
-                    class="book-card
-                           bg-white
+                    class="book-card bg-white
                            rounded-2xl
                            border border-gray-100
-                           shadow-sm
-                           hover:shadow-xl
-                           transition
-                           overflow-hidden"
-                    data-id="1"
+                           shadow-sm hover:shadow-xl
+                           transition overflow-hidden"
                     data-title="Clean Code"
                     data-author="Robert C. Martin"
                     data-category="software engineering"
@@ -583,22 +535,17 @@
                     data-rating="4.8"
                 >
 
-                    <div
-                        class="relative
-                               aspect-[3/4]"
-                    >
+                    <div class="relative aspect-[3/4]">
 
                         <img
                             src="https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=600&auto=format&fit=crop"
                             alt="Clean Code"
-                            class="w-full h-full
-                                   object-cover"
+                            class="w-full h-full object-cover"
                         >
 
 
                         <span
-                            class="absolute
-                                   top-3 left-3
+                            class="absolute top-3 left-3
                                    bg-brand-600
                                    text-white
                                    text-[10px]
@@ -614,8 +561,7 @@
                             type="button"
                             onclick="toggleFavorite(this)"
                             class="favorite-btn
-                                   absolute
-                                   top-3 right-3
+                                   absolute top-3 right-3
                                    w-9 h-9
                                    bg-white/90
                                    rounded-full
@@ -625,10 +571,7 @@
                                    shadow-md"
                         >
 
-                            <i
-                                class="fa-regular
-                                       fa-heart"
-                            ></i>
+                            <i class="fa-regular fa-heart"></i>
 
                         </button>
 
@@ -648,18 +591,12 @@
                         </span>
 
 
-                        <h3
-                            class="font-bold
-                                   text-gray-900 mt-2"
-                        >
+                        <h3 class="font-bold text-gray-900 mt-2">
                             Clean Code
                         </h3>
 
 
-                        <p
-                            class="text-xs
-                                   text-gray-500 mt-1"
-                        >
+                        <p class="text-xs text-gray-500 mt-1">
                             Robert C. Martin
                         </p>
 
@@ -673,8 +610,7 @@
                             <span class="font-bold">
 
                                 <i
-                                    class="fa-solid
-                                           fa-star
+                                    class="fa-solid fa-star
                                            text-amber-400"
                                 ></i>
 
@@ -686,8 +622,7 @@
                             <span
                                 class="text-emerald-600
                                        bg-emerald-50
-                                       px-2 py-1
-                                       rounded"
+                                       px-2 py-1 rounded"
                             >
                                 4 available
                             </span>
@@ -695,9 +630,9 @@
                         </div>
 
 
-                        <a
-                            href="{{ url_for('book_details', book_id=1) }}"
-                            class="block w-full mt-4
+                        <button
+                            onclick="borrowBook('Clean Code')"
+                            class="w-full mt-4
                                    py-2.5
                                    bg-brand-600
                                    hover:bg-brand-700
@@ -705,11 +640,10 @@
                                    text-xs
                                    font-bold
                                    rounded-xl
-                                   transition
-                                   text-center"
+                                   transition"
                         >
-                            View book
-                        </a>
+                            Borrow book
+                        </button>
 
                     </div>
 
@@ -722,15 +656,11 @@
                 ================================================== -->
 
                 <article
-                    class="book-card
-                           bg-white
+                    class="book-card bg-white
                            rounded-2xl
                            border border-gray-100
-                           shadow-sm
-                           hover:shadow-xl
-                           transition
-                           overflow-hidden"
-                    data-id="2"
+                           shadow-sm hover:shadow-xl
+                           transition overflow-hidden"
                     data-title="The Pragmatic Programmer"
                     data-author="David Thomas"
                     data-category="programming"
@@ -738,16 +668,12 @@
                     data-rating="4.9"
                 >
 
-                    <div
-                        class="relative
-                               aspect-[3/4]"
-                    >
+                    <div class="relative aspect-[3/4]">
 
                         <img
                             src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600&auto=format&fit=crop"
                             alt="The Pragmatic Programmer"
-                            class="w-full h-full
-                                   object-cover"
+                            class="w-full h-full object-cover"
                         >
 
 
@@ -755,8 +681,7 @@
                             type="button"
                             onclick="toggleFavorite(this)"
                             class="favorite-btn
-                                   absolute
-                                   top-3 right-3
+                                   absolute top-3 right-3
                                    w-9 h-9
                                    bg-white/90
                                    rounded-full
@@ -766,10 +691,7 @@
                                    shadow-md"
                         >
 
-                            <i
-                                class="fa-regular
-                                       fa-heart"
-                            ></i>
+                            <i class="fa-regular fa-heart"></i>
 
                         </button>
 
@@ -781,26 +703,19 @@
                         <span
                             class="text-[10px]
                                    font-extrabold
-                                   uppercase
-                                   tracking-wider
+                                   uppercase tracking-wider
                                    text-emerald-600"
                         >
                             Programming
                         </span>
 
 
-                        <h3
-                            class="font-bold
-                                   text-gray-900 mt-2"
-                        >
+                        <h3 class="font-bold text-gray-900 mt-2">
                             The Pragmatic Programmer
                         </h3>
 
 
-                        <p
-                            class="text-xs
-                                   text-gray-500 mt-1"
-                        >
+                        <p class="text-xs text-gray-500 mt-1">
                             David Thomas
                         </p>
 
@@ -814,8 +729,7 @@
                             <span class="font-bold">
 
                                 <i
-                                    class="fa-solid
-                                           fa-star
+                                    class="fa-solid fa-star
                                            text-amber-400"
                                 ></i>
 
@@ -827,8 +741,7 @@
                             <span
                                 class="text-emerald-600
                                        bg-emerald-50
-                                       px-2 py-1
-                                       rounded"
+                                       px-2 py-1 rounded"
                             >
                                 2 available
                             </span>
@@ -836,9 +749,9 @@
                         </div>
 
 
-                        <a
-                            href="{{ url_for('book_details', book_id=2) }}"
-                            class="block w-full mt-4
+                        <button
+                            onclick="borrowBook('The Pragmatic Programmer')"
+                            class="w-full mt-4
                                    py-2.5
                                    bg-brand-600
                                    hover:bg-brand-700
@@ -846,11 +759,10 @@
                                    text-xs
                                    font-bold
                                    rounded-xl
-                                   transition
-                                   text-center"
+                                   transition"
                         >
-                            View book
-                        </a>
+                            Borrow book
+                        </button>
 
                     </div>
 
@@ -863,15 +775,11 @@
                 ================================================== -->
 
                 <article
-                    class="book-card
-                           bg-white
+                    class="book-card bg-white
                            rounded-2xl
                            border border-gray-100
-                           shadow-sm
-                           hover:shadow-xl
-                           transition
-                           overflow-hidden"
-                    data-id="3"
+                           shadow-sm hover:shadow-xl
+                           transition overflow-hidden"
                     data-title="Python Crash Course"
                     data-author="Eric Matthes"
                     data-category="computer science"
@@ -879,16 +787,12 @@
                     data-rating="4.7"
                 >
 
-                    <div
-                        class="relative
-                               aspect-[3/4]"
-                    >
+                    <div class="relative aspect-[3/4]">
 
                         <img
                             src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600&auto=format&fit=crop"
                             alt="Python Crash Course"
-                            class="w-full h-full
-                                   object-cover"
+                            class="w-full h-full object-cover"
                         >
 
 
@@ -896,8 +800,7 @@
                             type="button"
                             onclick="toggleFavorite(this)"
                             class="favorite-btn
-                                   absolute
-                                   top-3 right-3
+                                   absolute top-3 right-3
                                    w-9 h-9
                                    bg-white/90
                                    rounded-full
@@ -907,10 +810,7 @@
                                    shadow-md"
                         >
 
-                            <i
-                                class="fa-regular
-                                       fa-heart"
-                            ></i>
+                            <i class="fa-regular fa-heart"></i>
 
                         </button>
 
@@ -922,26 +822,19 @@
                         <span
                             class="text-[10px]
                                    font-extrabold
-                                   uppercase
-                                   tracking-wider
+                                   uppercase tracking-wider
                                    text-emerald-600"
                         >
                             Computer Science
                         </span>
 
 
-                        <h3
-                            class="font-bold
-                                   text-gray-900 mt-2"
-                        >
+                        <h3 class="font-bold text-gray-900 mt-2">
                             Python Crash Course
                         </h3>
 
 
-                        <p
-                            class="text-xs
-                                   text-gray-500 mt-1"
-                        >
+                        <p class="text-xs text-gray-500 mt-1">
                             Eric Matthes
                         </p>
 
@@ -955,8 +848,7 @@
                             <span class="font-bold">
 
                                 <i
-                                    class="fa-solid
-                                           fa-star
+                                    class="fa-solid fa-star
                                            text-amber-400"
                                 ></i>
 
@@ -968,8 +860,7 @@
                             <span
                                 class="text-emerald-600
                                        bg-emerald-50
-                                       px-2 py-1
-                                       rounded"
+                                       px-2 py-1 rounded"
                             >
                                 5 available
                             </span>
@@ -977,9 +868,9 @@
                         </div>
 
 
-                        <a
-                            href="{{ url_for('book_details', book_id=3) }}"
-                            class="block w-full mt-4
+                        <button
+                            onclick="borrowBook('Python Crash Course')"
+                            class="w-full mt-4
                                    py-2.5
                                    bg-brand-600
                                    hover:bg-brand-700
@@ -987,11 +878,10 @@
                                    text-xs
                                    font-bold
                                    rounded-xl
-                                   transition
-                                   text-center"
+                                   transition"
                         >
-                            View book
-                        </a>
+                            Borrow book
+                        </button>
 
                     </div>
 
@@ -1004,15 +894,11 @@
                 ================================================== -->
 
                 <article
-                    class="book-card
-                           bg-white
+                    class="book-card bg-white
                            rounded-2xl
                            border border-gray-100
-                           shadow-sm
-                           hover:shadow-xl
-                           transition
-                           overflow-hidden"
-                    data-id="4"
+                           shadow-sm hover:shadow-xl
+                           transition overflow-hidden"
                     data-title="Introduction to Algorithms"
                     data-author="Thomas H. Cormen"
                     data-category="computer science"
@@ -1020,16 +906,12 @@
                     data-rating="4.6"
                 >
 
-                    <div
-                        class="relative
-                               aspect-[3/4]"
-                    >
+                    <div class="relative aspect-[3/4]">
 
                         <img
                             src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600&auto=format&fit=crop"
                             alt="Introduction to Algorithms"
-                            class="w-full h-full
-                                   object-cover"
+                            class="w-full h-full object-cover"
                         >
 
 
@@ -1037,8 +919,7 @@
                             type="button"
                             onclick="toggleFavorite(this)"
                             class="favorite-btn
-                                   absolute
-                                   top-3 right-3
+                                   absolute top-3 right-3
                                    w-9 h-9
                                    bg-white/90
                                    rounded-full
@@ -1048,10 +929,7 @@
                                    shadow-md"
                         >
 
-                            <i
-                                class="fa-regular
-                                       fa-heart"
-                            ></i>
+                            <i class="fa-regular fa-heart"></i>
 
                         </button>
 
@@ -1063,26 +941,19 @@
                         <span
                             class="text-[10px]
                                    font-extrabold
-                                   uppercase
-                                   tracking-wider
+                                   uppercase tracking-wider
                                    text-emerald-600"
                         >
-                            Computer Science
+                            Algorithms
                         </span>
 
 
-                        <h3
-                            class="font-bold
-                                   text-gray-900 mt-2"
-                        >
+                        <h3 class="font-bold text-gray-900 mt-2">
                             Introduction to Algorithms
                         </h3>
 
 
-                        <p
-                            class="text-xs
-                                   text-gray-500 mt-1"
-                        >
+                        <p class="text-xs text-gray-500 mt-1">
                             Thomas H. Cormen
                         </p>
 
@@ -1096,8 +967,7 @@
                             <span class="font-bold">
 
                                 <i
-                                    class="fa-solid
-                                           fa-star
+                                    class="fa-solid fa-star
                                            text-amber-400"
                                 ></i>
 
@@ -1109,8 +979,7 @@
                             <span
                                 class="text-amber-600
                                        bg-amber-50
-                                       px-2 py-1
-                                       rounded"
+                                       px-2 py-1 rounded"
                             >
                                 Waitlist
                             </span>
@@ -1118,9 +987,9 @@
                         </div>
 
 
-                        <a
-                            href="{{ url_for('book_details', book_id=4) }}"
-                            class="block w-full mt-4
+                        <button
+                            onclick="joinWaitlist('Introduction to Algorithms')"
+                            class="w-full mt-4
                                    py-2.5
                                    bg-amber-500
                                    hover:bg-amber-600
@@ -1128,11 +997,10 @@
                                    text-xs
                                    font-bold
                                    rounded-xl
-                                   transition
-                                   text-center"
+                                   transition"
                         >
-                            View book
-                        </a>
+                            Join waitlist
+                        </button>
 
                     </div>
 
@@ -1145,55 +1013,32 @@
                 ================================================== -->
 
                 <article
-                    class="book-card
-                           bg-white
+                    class="book-card bg-white
                            rounded-2xl
                            border border-gray-100
-                           shadow-sm
-                           hover:shadow-xl
-                           transition
-                           overflow-hidden"
-                    data-id="5"
+                           shadow-sm hover:shadow-xl
+                           transition overflow-hidden"
                     data-title="Atomic Habits"
                     data-author="James Clear"
-                    data-category="self-development"
+                    data-category="literature"
                     data-availability="available"
                     data-rating="4.9"
                 >
 
-                    <div
-                        class="relative
-                               aspect-[3/4]"
-                    >
+                    <div class="relative aspect-[3/4]">
 
                         <img
                             src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?q=80&w=600&auto=format&fit=crop"
                             alt="Atomic Habits"
-                            class="w-full h-full
-                                   object-cover"
+                            class="w-full h-full object-cover"
                         >
-
-
-                        <span
-                            class="absolute
-                                   top-3 left-3
-                                   bg-brand-600
-                                   text-white
-                                   text-[10px]
-                                   font-bold
-                                   px-3 py-1.5
-                                   rounded-full"
-                        >
-                            TRENDING
-                        </span>
 
 
                         <button
                             type="button"
                             onclick="toggleFavorite(this)"
                             class="favorite-btn
-                                   absolute
-                                   top-3 right-3
+                                   absolute top-3 right-3
                                    w-9 h-9
                                    bg-white/90
                                    rounded-full
@@ -1203,10 +1048,7 @@
                                    shadow-md"
                         >
 
-                            <i
-                                class="fa-regular
-                                       fa-heart"
-                            ></i>
+                            <i class="fa-regular fa-heart"></i>
 
                         </button>
 
@@ -1218,26 +1060,19 @@
                         <span
                             class="text-[10px]
                                    font-extrabold
-                                   uppercase
-                                   tracking-wider
+                                   uppercase tracking-wider
                                    text-emerald-600"
                         >
-                            Self Development
+                            Literature
                         </span>
 
 
-                        <h3
-                            class="font-bold
-                                   text-gray-900 mt-2"
-                        >
+                        <h3 class="font-bold text-gray-900 mt-2">
                             Atomic Habits
                         </h3>
 
 
-                        <p
-                            class="text-xs
-                                   text-gray-500 mt-1"
-                        >
+                        <p class="text-xs text-gray-500 mt-1">
                             James Clear
                         </p>
 
@@ -1251,8 +1086,7 @@
                             <span class="font-bold">
 
                                 <i
-                                    class="fa-solid
-                                           fa-star
+                                    class="fa-solid fa-star
                                            text-amber-400"
                                 ></i>
 
@@ -1264,8 +1098,7 @@
                             <span
                                 class="text-emerald-600
                                        bg-emerald-50
-                                       px-2 py-1
-                                       rounded"
+                                       px-2 py-1 rounded"
                             >
                                 3 available
                             </span>
@@ -1273,9 +1106,9 @@
                         </div>
 
 
-                        <a
-                            href="{{ url_for('book_details', book_id=5) }}"
-                            class="block w-full mt-4
+                        <button
+                            onclick="borrowBook('Atomic Habits')"
+                            class="w-full mt-4
                                    py-2.5
                                    bg-brand-600
                                    hover:bg-brand-700
@@ -1283,11 +1116,10 @@
                                    text-xs
                                    font-bold
                                    rounded-xl
-                                   transition
-                                   text-center"
+                                   transition"
                         >
-                            View book
-                        </a>
+                            Borrow book
+                        </button>
 
                     </div>
 
@@ -1300,15 +1132,11 @@
                 ================================================== -->
 
                 <article
-                    class="book-card
-                           bg-white
+                    class="book-card bg-white
                            rounded-2xl
                            border border-gray-100
-                           shadow-sm
-                           hover:shadow-xl
-                           transition
-                           overflow-hidden"
-                    data-id="6"
+                           shadow-sm hover:shadow-xl
+                           transition overflow-hidden"
                     data-title="The Lean Startup"
                     data-author="Eric Ries"
                     data-category="business"
@@ -1316,16 +1144,12 @@
                     data-rating="4.5"
                 >
 
-                    <div
-                        class="relative
-                               aspect-[3/4]"
-                    >
+                    <div class="relative aspect-[3/4]">
 
                         <img
                             src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=600&auto=format&fit=crop"
                             alt="The Lean Startup"
-                            class="w-full h-full
-                                   object-cover"
+                            class="w-full h-full object-cover"
                         >
 
 
@@ -1333,8 +1157,7 @@
                             type="button"
                             onclick="toggleFavorite(this)"
                             class="favorite-btn
-                                   absolute
-                                   top-3 right-3
+                                   absolute top-3 right-3
                                    w-9 h-9
                                    bg-white/90
                                    rounded-full
@@ -1344,10 +1167,7 @@
                                    shadow-md"
                         >
 
-                            <i
-                                class="fa-regular
-                                       fa-heart"
-                            ></i>
+                            <i class="fa-regular fa-heart"></i>
 
                         </button>
 
@@ -1359,26 +1179,19 @@
                         <span
                             class="text-[10px]
                                    font-extrabold
-                                   uppercase
-                                   tracking-wider
+                                   uppercase tracking-wider
                                    text-emerald-600"
                         >
                             Business & Economics
                         </span>
 
 
-                        <h3
-                            class="font-bold
-                                   text-gray-900 mt-2"
-                        >
+                        <h3 class="font-bold text-gray-900 mt-2">
                             The Lean Startup
                         </h3>
 
 
-                        <p
-                            class="text-xs
-                                   text-gray-500 mt-1"
-                        >
+                        <p class="text-xs text-gray-500 mt-1">
                             Eric Ries
                         </p>
 
@@ -1392,8 +1205,7 @@
                             <span class="font-bold">
 
                                 <i
-                                    class="fa-solid
-                                           fa-star
+                                    class="fa-solid fa-star
                                            text-amber-400"
                                 ></i>
 
@@ -1405,8 +1217,7 @@
                             <span
                                 class="text-emerald-600
                                        bg-emerald-50
-                                       px-2 py-1
-                                       rounded"
+                                       px-2 py-1 rounded"
                             >
                                 6 available
                             </span>
@@ -1414,9 +1225,9 @@
                         </div>
 
 
-                        <a
-                            href="{{ url_for('book_details', book_id=6) }}"
-                            class="block w-full mt-4
+                        <button
+                            onclick="borrowBook('The Lean Startup')"
+                            class="w-full mt-4
                                    py-2.5
                                    bg-brand-600
                                    hover:bg-brand-700
@@ -1424,11 +1235,10 @@
                                    text-xs
                                    font-bold
                                    rounded-xl
-                                   transition
-                                   text-center"
+                                   transition"
                         >
-                            View book
-                        </a>
+                            Borrow book
+                        </button>
 
                     </div>
 
@@ -1441,15 +1251,11 @@
                 ================================================== -->
 
                 <article
-                    class="book-card
-                           bg-white
+                    class="book-card bg-white
                            rounded-2xl
                            border border-gray-100
-                           shadow-sm
-                           hover:shadow-xl
-                           transition
-                           overflow-hidden"
-                    data-id="7"
+                           shadow-sm hover:shadow-xl
+                           transition overflow-hidden"
                     data-title="A Brief History of Time"
                     data-author="Stephen Hawking"
                     data-category="science"
@@ -1457,16 +1263,12 @@
                     data-rating="4.7"
                 >
 
-                    <div
-                        class="relative
-                               aspect-[3/4]"
-                    >
+                    <div class="relative aspect-[3/4]">
 
                         <img
                             src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=600&auto=format&fit=crop"
                             alt="A Brief History of Time"
-                            class="w-full h-full
-                                   object-cover"
+                            class="w-full h-full object-cover"
                         >
 
 
@@ -1474,8 +1276,7 @@
                             type="button"
                             onclick="toggleFavorite(this)"
                             class="favorite-btn
-                                   absolute
-                                   top-3 right-3
+                                   absolute top-3 right-3
                                    w-9 h-9
                                    bg-white/90
                                    rounded-full
@@ -1485,10 +1286,7 @@
                                    shadow-md"
                         >
 
-                            <i
-                                class="fa-regular
-                                       fa-heart"
-                            ></i>
+                            <i class="fa-regular fa-heart"></i>
 
                         </button>
 
@@ -1500,26 +1298,19 @@
                         <span
                             class="text-[10px]
                                    font-extrabold
-                                   uppercase
-                                   tracking-wider
+                                   uppercase tracking-wider
                                    text-emerald-600"
                         >
                             Science & Research
                         </span>
 
 
-                        <h3
-                            class="font-bold
-                                   text-gray-900 mt-2"
-                        >
+                        <h3 class="font-bold text-gray-900 mt-2">
                             A Brief History of Time
                         </h3>
 
 
-                        <p
-                            class="text-xs
-                                   text-gray-500 mt-1"
-                        >
+                        <p class="text-xs text-gray-500 mt-1">
                             Stephen Hawking
                         </p>
 
@@ -1533,8 +1324,7 @@
                             <span class="font-bold">
 
                                 <i
-                                    class="fa-solid
-                                           fa-star
+                                    class="fa-solid fa-star
                                            text-amber-400"
                                 ></i>
 
@@ -1546,8 +1336,7 @@
                             <span
                                 class="text-emerald-600
                                        bg-emerald-50
-                                       px-2 py-1
-                                       rounded"
+                                       px-2 py-1 rounded"
                             >
                                 2 available
                             </span>
@@ -1555,9 +1344,9 @@
                         </div>
 
 
-                        <a
-                            href="{{ url_for('book_details', book_id=7) }}"
-                            class="block w-full mt-4
+                        <button
+                            onclick="borrowBook('A Brief History of Time')"
+                            class="w-full mt-4
                                    py-2.5
                                    bg-brand-600
                                    hover:bg-brand-700
@@ -1565,11 +1354,10 @@
                                    text-xs
                                    font-bold
                                    rounded-xl
-                                   transition
-                                   text-center"
+                                   transition"
                         >
-                            View book
-                        </a>
+                            Borrow book
+                        </button>
 
                     </div>
 
@@ -1582,15 +1370,11 @@
                 ================================================== -->
 
                 <article
-                    class="book-card
-                           bg-white
+                    class="book-card bg-white
                            rounded-2xl
                            border border-gray-100
-                           shadow-sm
-                           hover:shadow-xl
-                           transition
-                           overflow-hidden"
-                    data-id="8"
+                           shadow-sm hover:shadow-xl
+                           transition overflow-hidden"
                     data-title="Don't Make Me Think"
                     data-author="Steve Krug"
                     data-category="software engineering"
@@ -1598,16 +1382,12 @@
                     data-rating="4.6"
                 >
 
-                    <div
-                        class="relative
-                               aspect-[3/4]"
-                    >
+                    <div class="relative aspect-[3/4]">
 
                         <img
                             src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=600&auto=format&fit=crop"
                             alt="Don't Make Me Think"
-                            class="w-full h-full
-                                   object-cover"
+                            class="w-full h-full object-cover"
                         >
 
 
@@ -1615,8 +1395,7 @@
                             type="button"
                             onclick="toggleFavorite(this)"
                             class="favorite-btn
-                                   absolute
-                                   top-3 right-3
+                                   absolute top-3 right-3
                                    w-9 h-9
                                    bg-white/90
                                    rounded-full
@@ -1626,10 +1405,7 @@
                                    shadow-md"
                         >
 
-                            <i
-                                class="fa-regular
-                                       fa-heart"
-                            ></i>
+                            <i class="fa-regular fa-heart"></i>
 
                         </button>
 
@@ -1641,26 +1417,19 @@
                         <span
                             class="text-[10px]
                                    font-extrabold
-                                   uppercase
-                                   tracking-wider
+                                   uppercase tracking-wider
                                    text-emerald-600"
                         >
                             Software Engineering
                         </span>
 
 
-                        <h3
-                            class="font-bold
-                                   text-gray-900 mt-2"
-                        >
+                        <h3 class="font-bold text-gray-900 mt-2">
                             Don't Make Me Think
                         </h3>
 
 
-                        <p
-                            class="text-xs
-                                   text-gray-500 mt-1"
-                        >
+                        <p class="text-xs text-gray-500 mt-1">
                             Steve Krug
                         </p>
 
@@ -1674,8 +1443,7 @@
                             <span class="font-bold">
 
                                 <i
-                                    class="fa-solid
-                                           fa-star
+                                    class="fa-solid fa-star
                                            text-amber-400"
                                 ></i>
 
@@ -1687,8 +1455,7 @@
                             <span
                                 class="text-emerald-600
                                        bg-emerald-50
-                                       px-2 py-1
-                                       rounded"
+                                       px-2 py-1 rounded"
                             >
                                 4 available
                             </span>
@@ -1696,9 +1463,9 @@
                         </div>
 
 
-                        <a
-                            href="{{ url_for('book_details', book_id=8) }}"
-                            class="block w-full mt-4
+                        <button
+                            onclick="borrowBook('Don’t Make Me Think')"
+                            class="w-full mt-4
                                    py-2.5
                                    bg-brand-600
                                    hover:bg-brand-700
@@ -1706,16 +1473,14 @@
                                    text-xs
                                    font-bold
                                    rounded-xl
-                                   transition
-                                   text-center"
+                                   transition"
                         >
-                            View book
-                        </a>
+                            Borrow book
+                        </button>
 
                     </div>
 
                 </article>
-
 
             </div>
 
@@ -1725,9 +1490,7 @@
 
             <div
                 id="noResults"
-                class="hidden
-                       text-center
-                       py-16"
+                class="hidden text-center py-16"
             >
 
                 <div
@@ -1740,30 +1503,21 @@
                            justify-center"
                 >
 
-                    <i
-                        class="fa-solid
-                               fa-book-open
-                               text-2xl"
-                    ></i>
+                    <i class="fa-solid fa-book-open text-2xl"></i>
 
                 </div>
 
 
                 <h3
-                    class="text-xl
-                           font-bold
+                    class="text-xl font-bold
                            text-gray-900 mt-5"
                 >
                     No books found
                 </h3>
 
 
-                <p
-                    class="text-gray-500
-                           text-sm mt-2"
-                >
-                    Try a different title,
-                    author, or category.
+                <p class="text-gray-500 text-sm mt-2">
+                    Try a different title, author, or category.
                 </p>
 
             </div>
@@ -1797,8 +1551,6 @@
                        gap-6"
             >
 
-                <!-- Footer Logo -->
-
                 <a
                     href="{{ url_for('home') }}"
                     class="flex items-center gap-3"
@@ -1812,29 +1564,21 @@
                                justify-center"
                     >
 
-                        <i
-                            class="fa-solid
-                                   fa-bookmark"
-                        ></i>
+                        <i class="fa-solid fa-bookmark"></i>
 
                     </div>
 
 
-                    <span
-                        class="text-xl
-                               font-bold"
-                    >
-                        Libra<span
-                            class="text-brand-500"
-                        >
+                    <span class="text-xl font-bold">
+
+                        Libra<span class="text-brand-500">
                             Nexus
                         </span>
+
                     </span>
 
                 </a>
 
-
-                <!-- Footer Links -->
 
                 <div
                     class="flex items-center
@@ -1848,14 +1592,6 @@
                         class="hover:text-white"
                     >
                         Home
-                    </a>
-
-
-                    <a
-                        href="{{ url_for('books') }}"
-                        class="hover:text-white"
-                    >
-                        Browse Books
                     </a>
 
 
@@ -1880,8 +1616,7 @@
                        text-slate-500"
             >
 
-                © 2026 LibraNexus.
-                All rights reserved.
+                © 2026 LibraNexus. All rights reserved.
 
             </div>
 
@@ -1897,9 +1632,9 @@
 
     <script>
 
-        // =========================================================
-        // MOBILE MENU
-        // =========================================================
+        // ---------------------------------------------------------
+        // Mobile Menu
+        // ---------------------------------------------------------
 
         const mobileMenuBtn =
             document.getElementById('mobile-menu-btn');
@@ -1916,9 +1651,9 @@
 
 
 
-        // =========================================================
-        // FAVORITE
-        // =========================================================
+        // ---------------------------------------------------------
+        // Favorite
+        // ---------------------------------------------------------
 
         function toggleFavorite(button) {
 
@@ -1932,23 +1667,15 @@
                 button.classList.contains('text-red-500')
             ) {
 
-                icon.classList.remove(
-                    'fa-regular'
-                );
+                icon.classList.remove('fa-regular');
 
-                icon.classList.add(
-                    'fa-solid'
-                );
+                icon.classList.add('fa-solid');
 
             } else {
 
-                icon.classList.remove(
-                    'fa-solid'
-                );
+                icon.classList.remove('fa-solid');
 
-                icon.classList.add(
-                    'fa-regular'
-                );
+                icon.classList.add('fa-regular');
 
             }
 
@@ -1956,59 +1683,32 @@
 
 
 
-        // =========================================================
-        // SEARCH + FILTER
-        // =========================================================
+        // ---------------------------------------------------------
+        // Search + Filters
+        // ---------------------------------------------------------
 
         const searchInput =
-            document.getElementById(
-                'searchInput'
-            );
-
+            document.getElementById('searchInput');
 
         const categoryFilter =
-            document.getElementById(
-                'categoryFilter'
-            );
-
+            document.getElementById('categoryFilter');
 
         const availabilityFilter =
-            document.getElementById(
-                'availabilityFilter'
-            );
-
+            document.getElementById('availabilityFilter');
 
         const sortFilter =
-            document.getElementById(
-                'sortFilter'
-            );
-
-
-        const booksGrid =
-            document.getElementById(
-                'booksGrid'
-            );
-
+            document.getElementById('sortFilter');
 
         const bookCards =
             Array.from(
-                document.querySelectorAll(
-                    '.book-card'
-                )
+                document.querySelectorAll('.book-card')
             );
-
 
         const bookCount =
-            document.getElementById(
-                'bookCount'
-            );
-
+            document.getElementById('bookCount');
 
         const noResults =
-            document.getElementById(
-                'noResults'
-            );
-
+            document.getElementById('noResults');
 
 
         function filterBooks() {
@@ -2018,40 +1718,31 @@
                     .toLowerCase()
                     .trim();
 
-
             const categoryValue =
                 categoryFilter.value
                     .toLowerCase();
-
 
             const availabilityValue =
                 availabilityFilter.value
                     .toLowerCase();
 
 
-            let visibleBooks = 0;
+            let visibleBooks = [];
 
 
             bookCards.forEach(card => {
 
                 const title =
-                    card.dataset.title
-                        .toLowerCase();
-
+                    card.dataset.title.toLowerCase();
 
                 const author =
-                    card.dataset.author
-                        .toLowerCase();
-
+                    card.dataset.author.toLowerCase();
 
                 const category =
-                    card.dataset.category
-                        .toLowerCase();
-
+                    card.dataset.category.toLowerCase();
 
                 const availability =
-                    card.dataset.availability
-                        .toLowerCase();
+                    card.dataset.availability.toLowerCase();
 
 
                 const matchesSearch =
@@ -2062,7 +1753,7 @@
 
                 const matchesCategory =
                     categoryValue === 'all' ||
-                    category === categoryValue;
+                    category.includes(categoryValue);
 
 
                 const matchesAvailability =
@@ -2078,17 +1769,13 @@
 
                 if (shouldShow) {
 
-                    card.classList.remove(
-                        'hidden'
-                    );
+                    card.classList.remove('hidden');
 
-                    visibleBooks++;
+                    visibleBooks.push(card);
 
                 } else {
 
-                    card.classList.add(
-                        'hidden'
-                    );
+                    card.classList.add('hidden');
 
                 }
 
@@ -2096,20 +1783,16 @@
 
 
             bookCount.textContent =
-                `Showing ${visibleBooks} book${visibleBooks === 1 ? '' : 's'}`;
+                `Showing ${visibleBooks.length} books`;
 
 
-            if (visibleBooks === 0) {
+            if (visibleBooks.length === 0) {
 
-                noResults.classList.remove(
-                    'hidden'
-                );
+                noResults.classList.remove('hidden');
 
             } else {
 
-                noResults.classList.add(
-                    'hidden'
-                );
+                noResults.classList.add('hidden');
 
             }
 
@@ -2136,90 +1819,83 @@
 
 
 
-        // =========================================================
-        // SORTING
-        // =========================================================
+        // ---------------------------------------------------------
+        // Sorting
+        // ---------------------------------------------------------
 
-        sortFilter.addEventListener(
-            'change',
-            () => {
+        sortFilter.addEventListener('change', () => {
 
-                const cards =
-                    Array.from(
-                        booksGrid.querySelectorAll(
-                            '.book-card'
-                        )
+            const grid =
+                document.getElementById('booksGrid');
+
+            const cards =
+                Array.from(
+                    grid.querySelectorAll('.book-card')
+                );
+
+
+            if (sortFilter.value === 'title') {
+
+                cards.sort((a, b) => {
+
+                    return a.dataset.title.localeCompare(
+                        b.dataset.title
                     );
-
-
-                if (
-                    sortFilter.value === 'title'
-                ) {
-
-                    cards.sort((a, b) => {
-
-                        return a.dataset.title
-                            .localeCompare(
-                                b.dataset.title
-                            );
-
-                    });
-
-                }
-
-
-                if (
-                    sortFilter.value === 'rating'
-                ) {
-
-                    cards.sort((a, b) => {
-
-                        return (
-                            parseFloat(
-                                b.dataset.rating
-                            ) -
-                            parseFloat(
-                                a.dataset.rating
-                            )
-                        );
-
-                    });
-
-                }
-
-
-                if (
-                    sortFilter.value === 'default'
-                ) {
-
-                    cards.sort((a, b) => {
-
-                        return (
-                            parseInt(a.dataset.id) -
-                            parseInt(b.dataset.id)
-                        );
-
-                    });
-
-                }
-
-
-                cards.forEach(card => {
-
-                    booksGrid.appendChild(card);
 
                 });
 
             }
-        );
+
+
+            if (sortFilter.value === 'rating') {
+
+                cards.sort((a, b) => {
+
+                    return parseFloat(b.dataset.rating) -
+                           parseFloat(a.dataset.rating);
+
+                });
+
+            }
+
+
+            cards.forEach(card => {
+
+                grid.appendChild(card);
+
+            });
+
+        });
 
 
 
-        // =========================================================
-        // INITIAL FILTER
-        // =========================================================
+        // ---------------------------------------------------------
+        // Borrow Book - Temporary UI
+        // ---------------------------------------------------------
 
-        filterBooks();
+        function borrowBook(bookName) {
+
+            alert(
+                `"${bookName}" selected for borrowing.\n\n` +
+                `Login is required to continue.`
+            );
+
+        }
+
+
+
+        // ---------------------------------------------------------
+        // Waitlist - Temporary UI
+        // ---------------------------------------------------------
+
+        function joinWaitlist(bookName) {
+
+            alert(
+                `"${bookName}" is currently unavailable.\n\n` +
+                `Please login to join the waitlist.`
+            );
+
+        }
 
     </script>
 

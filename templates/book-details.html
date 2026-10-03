@@ -69,34 +69,47 @@
             </a>
 
 
-            <!-- NAVIGATION -->
+            <!-- Desktop Navigation -->
 
-            <div class="hidden md:flex items-center gap-8">
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold">
 
                 <a
                     href="{{ url_for('home') }}"
-                    class="text-slate-600 hover:text-indigo-600
-                           font-medium transition"
+                    class="text-brand-600"
                 >
                     Home
                 </a>
 
                 <a
                     href="{{ url_for('books') }}"
-                    class="text-indigo-600 font-semibold"
+                    class="text-gray-600 hover:text-brand-600 transition"
                 >
                     Browse Books
                 </a>
 
                 <a
-                    href="{{ url_for('login') }}"
-                    class="text-slate-600 hover:text-indigo-600
-                           font-medium transition"
+                    href="{{ url_for('home') }}#categories"
+                    class="text-gray-600 hover:text-brand-600 transition"
                 >
-                    Member Portal
+                    Categories
                 </a>
 
-            </div>
+                <a
+                    href="{{ url_for('home') }}#about"
+                    class="text-gray-600 hover:text-brand-600 transition"
+                >
+                    About
+                </a>
+
+                
+               <a 
+               href="{{ url_for('dashboard') }}" 
+               class="text-gray-600 hover:text-brand-600 transition"
+>
+               Dashboard
+               </a>
+
+            </nav>
 
 
             <!-- ACTIONS -->

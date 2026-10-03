@@ -23,6 +23,35 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     >
 
+
+    <!-- Tailwind CSS - same setup as Home and Browse Books -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+
+                    colors: {
+                        brand: {
+                            50: '#EEF2FF',
+                            100: '#E0E7FF',
+                            500: '#6366F1',
+                            600: '#4F46E5',
+                            700: '#4338CA',
+                        },
+
+                        navy: '#0F172A',
+                        emerald: '#0D9488'
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -689,80 +718,190 @@
 
 <body>
 
-    <!-- =========================
+    <!-- =========================================================
          NAVBAR
-    ========================== -->
+    ========================================================== -->
 
-    <nav class="navbar" id="navbar">
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
 
-        <a href="{{ url_for('home') }}" class="brand">
-            <div class="brand-icon">
-                <i class="fa-solid fa-book-open"></i>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20
+                    flex items-center justify-between">
+
+            <!-- Logo -->
+
+            <a
+                href="{{ url_for('home') }}"
+                class="flex items-center gap-3"
+            >
+
+                <div
+                    class="w-10 h-10 bg-[#1E293B]
+                           rounded-xl flex items-center
+                           justify-center text-white shadow-md"
+                >
+
+                    <i class="fa-solid fa-bookmark"></i>
+
+                </div>
+
+                <span
+                    class="text-xl font-bold tracking-tight text-[#0F172A]"
+                >
+                    Libra<span class="text-brand-600">Nexus</span>
+                </span>
+
+            </a>
+
+
+            <!-- Desktop Navigation -->
+
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold">
+
+                <a
+                    href="{{ url_for('home') }}"
+                    class="text-gray-600 hover:text-brand-600 transition"
+                >
+                    Home
+                </a>
+
+                <a
+                    href="{{ url_for('books') }}"
+                    class="text-gray-600 hover:text-brand-600 transition"
+                >
+                    Browse Books
+                </a>
+
+                <a
+                    href="{{ url_for('home') }}#categories"
+                    class="text-gray-600 hover:text-brand-600 transition"
+                >
+                    Categories
+                </a>
+
+                <a
+                    href="{{ url_for('home') }}#about"
+                    class="text-gray-600 hover:text-brand-600 transition"
+                >
+                    About
+                </a>
+
+                <a
+                    href="{{ url_for('dashboard') }}"
+                    class="text-brand-600"
+                >
+                    Dashboard
+                </a>
+
+            </nav>
+
+
+            <!-- Desktop Actions -->
+
+            <div class="hidden sm:flex items-center gap-6">
+
+                <a
+                    href="{{ url_for('login') }}"
+                    class="text-sm font-bold text-gray-700
+                           hover:text-brand-600 transition"
+                >
+                    Log in
+                </a>
+
+                <a
+                    href="{{ url_for('login') }}"
+                    class="bg-brand-600 hover:bg-brand-700
+                           text-white text-sm font-semibold
+                           px-6 py-2.5 rounded-xl
+                           shadow-sm transition"
+                >
+                    Get started
+                </a>
+
             </div>
-            <span>LibraNexus</span>
-        </a>
 
-        <div class="nav-links">
-            <a href="{{ url_for('home') }}">
-                Home
-            </a>
 
-            <a href="{{ url_for('books') }}">
-                Browse Books
-            </a>
-
-            <a href="{{ url_for('dashboard') }}" class="active">
-                Dashboard
-            </a>
-
-            <a href="{{ url_for('borrowed_books') }}">
-                My Books
-            </a>
-        </div>
-
-        <div class="nav-right">
+            <!-- Mobile Button -->
 
             <button
-                class="notification-btn"
-                onclick="showNotifications()"
-                aria-label="Notifications"
+                id="mobile-menu-btn"
+                type="button"
+                class="md:hidden p-2 text-gray-600"
+                aria-label="Open menu"
             >
-                <i class="fa-regular fa-bell"></i>
-                <span class="notification-dot"></span>
+                <i class="fa-solid fa-bars text-xl"></i>
             </button>
 
-            <div class="profile">
-                <div class="profile-avatar">
-                    CS
-                </div>
+        </div>
 
-                <div class="profile-info">
-                    <span class="profile-name">
-                        Chethanee Shehara
-                    </span>
 
-                    <span class="profile-role">
-                        Library Member
-                    </span>
-                </div>
+        <!-- Mobile Menu -->
 
-                <i
-                    class="fa-solid fa-chevron-down"
-                    style="font-size: 10px; color: #94a3b8;"
-                ></i>
+        <div
+            id="mobile-menu"
+            class="hidden md:hidden bg-white
+                   border-t border-gray-100 px-6 py-5"
+        >
+
+            <div class="flex flex-col gap-4">
+
+                <a
+                    href="{{ url_for('home') }}"
+                    class="text-gray-600"
+                >
+                    Home
+                </a>
+
+                <a
+                    href="{{ url_for('books') }}"
+                    class="text-gray-600"
+                >
+                    Browse Books
+                </a>
+
+                <a
+                    href="{{ url_for('home') }}#categories"
+                    class="text-gray-600"
+                >
+                    Categories
+                </a>
+
+                <a
+                    href="{{ url_for('home') }}#about"
+                    class="text-gray-600"
+                >
+                    About
+                </a>
+
+                <a
+                    href="{{ url_for('dashboard') }}"
+                    class="text-brand-600 font-semibold"
+                >
+                    Dashboard
+                </a>
+
+                <hr>
+
+                <a
+                    href="{{ url_for('login') }}"
+                    class="font-semibold text-gray-700"
+                >
+                    Log in
+                </a>
+
+                <a
+                    href="{{ url_for('login') }}"
+                    class="bg-brand-600 text-white
+                           text-center py-3 rounded-xl
+                           font-semibold"
+                >
+                    Get started
+                </a>
+
             </div>
 
         </div>
 
-        <button
-            class="mobile-menu-btn"
-            onclick="toggleMobileMenu()"
-            aria-label="Toggle menu"
-        >
-            <i class="fa-solid fa-bars"></i>
-        </button>
-
-    </nav>
+    </header>
 
 
     <!-- =========================
@@ -1431,12 +1570,15 @@
 
     <script>
 
-        function toggleMobileMenu() {
-            const navbar =
-                document.getElementById("navbar");
+        const mobileMenuBtn =
+            document.getElementById("mobile-menu-btn");
 
-            navbar.classList.toggle("mobile-open");
-        }
+        const mobileMenu =
+            document.getElementById("mobile-menu");
+
+        mobileMenuBtn.addEventListener("click", function () {
+            mobileMenu.classList.toggle("hidden");
+        });
 
 
         function showNotifications() {
